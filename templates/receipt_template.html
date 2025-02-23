@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: monospace;
+            width: 300px;
+            margin: 0 auto;
+        }
+        .receipt {
+            width: {{ receipt_width }}px;
+            word-wrap: break-word;
+            white-space: normal;
+            margin: 0 auto;
+        }
+        .line {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .product {
+            width: calc(50% - 10px);
+        }
+        .line .price {
+            text-align: right;
+            width: calc(50% - 10px);
+        }
+        .center {
+            text-align: center;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .separator {
+            border-top: 1px solid #000;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+    <div class="center bold">
+        ФОП Джонсонюк Борис
+    </div>
+    <div class="separator"></div>
+
+    {% for product in products %}
+    <div class="line">
+        <span class="product">{{ product.name }}</span>
+        <span class="price">{{ product.quantity }} x {{ product.price }} = {{ product.total }}</span>
+    </div>
+    {% endfor %}
+
+    <div class="separator"></div>
+
+    <div class="line">
+        <span>СУМА</span>
+        <span>{{ total }}</span>
+    </div>
+    <div class="line">
+        <span>Картка</span>
+        <span>{{ payment.amount }}</span>
+    </div>
+    <div class="line">
+        <span>Решта</span>
+        <span>{{ rest }}</span>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="center">
+        {{ created_at }}
+    </div>
+    <div class="center bold">
+        Дякуємо за покупку!
+    </div>
+    </div>
+</body>
+</html>
