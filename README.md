@@ -43,11 +43,13 @@ The tests include 5 stages that verify the core functionality of the API.
 #### Private API
 
 First, you need to register a user at `/register`, then log in at `/login`, where you will receive a JWT token. This token must be used to access protected endpoints by including it in the headers.
-> curl -H "Authorization: Bearer {JWT_TOKEN}"
+```
+curl -H "Authorization: Bearer {YOUR_JWT_TOKEN}"
+```
 
 #### Public API
 
-You can obtain a printed receipt by knowing its ID, and additional parameters allow you to adjust the number of characters per line.
+You can obtain a printed receipt by its ID, and additional parameters allow you to adjust the number of characters per line.
 
 ![](images/receipt.png)
 
